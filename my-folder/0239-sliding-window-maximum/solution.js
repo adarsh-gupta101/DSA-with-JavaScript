@@ -48,26 +48,57 @@
 // };
 
 
-var maxSlidingWindow = function (nums, k) {
+// var maxSlidingWindow = function (nums, k) {
 
-    if (k == 1) return nums
-    let queue = [], result = []
-    for (end = 0; end < nums.length; end++) {
+//     if (k == 1) return nums
+//     let queue = [], result = []
+//     for (end = 0; end < nums.length; end++) {
 
-        if (queue.length > 0 && queue[0]< end - k + 1) {
+//         if (queue.length > 0 && queue[0]< end - k + 1) {
+//             queue.shift()
+//         }
+
+//         while (queue.length > 0 && nums[queue[queue.length - 1]] < nums[end]) {
+//             queue.pop()
+//         }
+
+//         queue.push(end)
+
+//         if (end >= k - 1) {
+//             result.push(nums[queue[0]])
+//         }
+
+//     }
+//     return result
+// }
+
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+var maxSlidingWindow = function(nums, k) {
+
+    let start=0
+    let queue=[],result=[]
+
+    for(let end=0;end<nums.length;end++){
+        if(k==1) return nums
+
+        if(queue.length>0 && queue[0]<end-k+1){
             queue.shift()
         }
 
-        while (queue.length > 0 && nums[queue[queue.length - 1]] < nums[end]) {
+        while(queue.length>0 && nums[queue[queue.length-1]]<nums[end]){
             queue.pop()
         }
 
         queue.push(end)
 
-        if (end >= k - 1) {
+        if(end>=k-1){
             result.push(nums[queue[0]])
         }
-
     }
     return result
-}
+};
