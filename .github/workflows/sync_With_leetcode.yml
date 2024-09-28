@@ -28,7 +28,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
       - name: Sync
-        uses: joshcai/leetcode-sync@v1.5
+        uses: joshcai/leetcode-sync@v1.7
         with:
           github-token: ${{ github.token }}
           leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
